@@ -1,0 +1,44 @@
+create table curso
+(
+    id_curso serial,
+    nombre   varchar(100) not null,
+    primary key (id_curso)
+);
+
+create table sucursal
+(
+    id_sucursal serial,
+    nombre      varchar(100),
+    primary key (id_sucursal)
+);
+
+create table empleado
+(
+    id_empleado serial,
+    nombre      varchar(100),
+    calificacion NUMERIC(2, 1),
+    primary key (id_empleado)
+);
+
+create table curso_empleado
+(
+    id_empleado serial,
+    id_curso    int not null,
+    primary key (id_empleado, id_curso),
+    foreign key (id_empleado) references empleado (id_empleado),
+    foreign key (id_curso) references curso (id_curso)
+);
+
+create table sucursal_empleado
+(
+    id_empleado serial,
+    id_sucursal int not null,
+    primary key (id_empleado, id_sucursal),
+    foreign key (id_empleado) references empleado (id_empleado),
+    foreign key (id_sucursal) references sucursal (id_sucursal)
+);
+
+insert into curso(nombre)
+values ('Ninguno');
+insert into sucursal(nombre)
+values ('Ninguno');
