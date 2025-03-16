@@ -1,0 +1,15 @@
+{% include '/header.html' %}
+{% for curso in cursos %}
+    <form method="post" action="/cursos/update" enctype="multipart/form-data">
+        <div class="form-group">
+            <label for="">Nombre</label>
+            <input type="text" class="form-control" value="{{curso[1]}}" name="TxtNombre" id="TxtNombre"
+                aria-describedby="emailHelp" placeholder="Ingrese el nombre">
+        </div>
+        <div>
+            <button type="submit" class="btn btn-primary">Guardar</button>
+        </div>
+        <input type="hidden" name="id" value="{{curso[0]}}">
+    </form>
+{% endfor %}
+{% include '/footer.html' %}

@@ -1,0 +1,12 @@
+{% include '/header.html' %}
+<form method="post" action="/cursos/create" enctype="multipart/form-data">
+    <div class="form-group">
+        <label for="exampleInputEmail1">Nombre</label>
+        <input type="text" class="form-control" name="TxtNombre" id="TxtNombre" aria-describedby="emailHelp"
+            placeholder="Ingrese el nombre">
+    </div>
+    <div>
+        <button type="submit" class="btn btn-primary">Agregar</button>
+    </div>
+</form>
+{% include '/footer.html' %}

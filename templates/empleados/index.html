@@ -1,0 +1,35 @@
+{% include '/header.html' %}
+<a class="btn btn-success" href="/empleados/create" role="button">Nuevo</a>
+<table id="myTable" class="display" class="table table-light">
+    <thead class="thead-light">
+        <tr>
+            <th>#</th>
+            <th>Nombre</th>
+            <th>Calificacion</th>
+            <th>Cursos</th>
+            <th>Sucursales</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for empleado in empleados %}
+        <tr>
+            <td>{{empleado[0]}}</td>
+            <td>{{empleado[1]}}</td>
+            <td>{{empleado[2]}}</td>
+            <td>{{empleado[4]}}</td>
+            <td>{{empleado[3]}}</td>
+            <td>
+                <a class="btn btn-primary" href="/empleados/edit/{{empleado[0]}}" role="button">Editar</a>
+                <a class="btn btn-danger" href="/empleados/delete/{{empleado[0]}}" role="button">Eliminar</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<script>
+    $(document).ready(function () {
+        $('#myTable').DataTable();
+    });
+</script>
+{% include '/footer.html' %}

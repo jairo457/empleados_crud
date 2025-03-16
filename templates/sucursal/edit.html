@@ -1,0 +1,17 @@
+{% include '/header.html' %}
+<div>
+    {% for sucursal in sucursales %}
+    <form method="post" action="/sucursal/update" enctype="multipart/form-data">
+        <div class="form-group">
+            <label for="exampleInputEmail1">Nombre</label>
+            <input type="text" value="{{sucursal[1]}}" class="form-control" name="TxtNombre" id="TxtNombre"
+                aria-describedby="emailHelp" placeholder="Ingrese el nombre">
+        </div>
+        <div>
+            <button type="submit" class="btn btn-primary">Guardar</button>
+        </div>
+        <input type="hidden" name="id" value="{{sucursal[0]}}">
+    </form>
+    {% endfor %}
+</div>
+{% include '/footer.html' %}

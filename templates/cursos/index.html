@@ -1,0 +1,31 @@
+{% include '/header.html' %}
+    <a class="btn btn-success" href="/cursos/create" role="button">Nuevo</a>
+<table id="myTable" class="display" class="table table-light">
+    <thead class="thead-light">
+        <tr>
+            <th>#</th>
+            <th>Nombre</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for curso in cursos   
+            if(curso[0] != 1)
+        %}
+        <tr>
+            <td>{{curso[0]}}</td>
+            <td>{{curso[1]}}</td>
+                <td>
+                    <a class="btn btn-primary" href="/cursos/edit/{{curso[0]}}" role="button">Editar</a>
+                    <a class="btn btn-danger {{curso[2]}}" href="/cursos/delete/{{curso[0]}}" role="button">Eliminar</a>
+                </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<script>
+$(document).ready( function () {
+    $('#myTable').DataTable();
+} );
+</script>
+{% include '/footer.html' %}

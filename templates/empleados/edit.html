@@ -1,0 +1,44 @@
+{% include '/header.html' %}
+{% for empleado in empleados %}
+<form method="post" action="/empleados/update" enctype="multipart/form-data">
+    <div class="form-group">
+        <label for="exampleInputEmail1">Nombre</label>
+        <input type="text" value="{{empleado[1]}}" class="form-control" name="TxtNombre" id="TxtNombre"
+            aria-describedby="emailHelp" placeholder="Ingrese el nombre">
+    </div>
+    <div>
+        <label>Calificacion</label>
+        <input type="range" value="{{empleado[2]}}" class="form-range" min="0" max="10" step="0.5" id="Range_1" name="Range_1"
+            oninput="this.nextElementSibling.value = this.value">
+        <output>5</output>
+    </div>
+    <div>
+        <label>Sucursal</label>
+        <select class="form-control select2" id="sucursal" name="sucursal[]" style="display: none;" multiple="multiple"
+            required>
+            multiple multiple="multiple">
+            {% for sucursal in sucursales %}
+            <option value="{{sucursal[0]}}" {{sucursal[2]}}>{{sucursal[1]}}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div>
+        <label>Curso</label>
+        <select class="form-control select2" id="curso" name="curso[]" style="display: none;" multiple="multiple"
+            required>
+            {% for curso in cursos %}
+            <option value="{{curso[0]}}" {{curso[2]}}>{{curso[1]}}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Guardar</button>
+    <input type="hidden" name="id" value="{{empleado[0]}}">
+</form>
+<script>
+    $(document).ready(function () {
+        $('#sucursal').select2();
+        $('#curso').select2();
+    });
+</script>
+{% endfor %}
+{% include '/footer.html' %}
